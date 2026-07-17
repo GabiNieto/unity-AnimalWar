@@ -20,7 +20,7 @@ public class animal_Base : MonoBehaviour
         currentHealth = maxHealth;
         transform.localScale = startScale;
 
-        StartCoroutine(TestDamage());
+        StartCoroutine(TestDamage()); //FOR TESTING PURPOSE
     }
 
     public void TakeDamage(float damage)
@@ -31,13 +31,24 @@ public class animal_Base : MonoBehaviour
         // Scale based on health
         float t = 1f - (currentHealth / maxHealth);
         transform.localScale = Vector3.Lerp(startScale, endScale, t);
+
+        if (currentHealth <= 0)
+        {
+            StartCoroutine(Die());
+        }
     }
 
 
-    IEnumerator TestDamage()
+    IEnumerator TestDamage() //FOR TESTING PURPOSE
     {
         yield return new WaitForSeconds(5);
         TakeDamage(9);
+    }
+
+    IEnumerator Die()
+    {
+        yield return new WaitForSeconds(0.25f);
+        Destroy(gameObject);
     }
 
     // Update is called once per frame
