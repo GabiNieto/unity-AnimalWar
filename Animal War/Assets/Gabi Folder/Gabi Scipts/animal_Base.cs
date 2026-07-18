@@ -13,6 +13,10 @@ public class animal_Base : MonoBehaviour
     public Vector3 endScale = new Vector3(3f, 3f, 3f);
 
 
+    //WAYPOINT PATH
+    public Transform[] waypoints;
+    private int currentWaypoint = 0;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,9 +55,34 @@ public class animal_Base : MonoBehaviour
         Destroy(gameObject);
     }
 
+    void MoveAlongPath()
+    {
+        if (currentWaypoint >= waypoints.Length)
+            return;
+
+        // Direction toward next waypoint
+        Vector3 dir = (waypoints[currentWaypoint].position - transform.position).normalized;
+
+        // Move forward
+        transform.position += dir * speed * Time.deltaTime;
+
+        // Smooth rotation toward movement direction
+        if (dir.sqrMagnitude > 0.001f)
+        {
+            Quaternion targetRot = Quaternion.LookRotation(dir);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, Time.deltaTime * 5f);
+        }
+
+        // Check if close enough to switch to next waypoint
+        if (Vector3.Distance(transform.position, waypoints[currentWaypoint].position) < 0.2f)
+        {
+            currentWaypoint++;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        MoveAlongPath();
     }
 }
