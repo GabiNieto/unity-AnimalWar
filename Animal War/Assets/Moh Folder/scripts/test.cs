@@ -7,7 +7,7 @@ public class test : MonoBehaviour
     public float speed = 5f;
     public Vector3 direction = Vector3.right;
     private Rigidbody rb;
-    public int hp;
+    public float hp;
 
     void Start()
     {
@@ -22,15 +22,12 @@ public class test : MonoBehaviour
     //cube attacked
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Game obj: "+other.gameObject);
+        WeaponBP wpn = other.GetComponent<WeaponBP>();
+        if (!other.CompareTag("proj") || wpn == null ) return;
 
-        if (!other.CompareTag("proj")) return;
-        
-        Debug.Log("HP: " + hp);
-        hp--;
-        Debug.Log("HP: " + hp);
+        hp -= wpn.dmg;
 
-        if (hp < 0)
+        if (hp <= 0)
         {
             Destroy(gameObject);
         }
