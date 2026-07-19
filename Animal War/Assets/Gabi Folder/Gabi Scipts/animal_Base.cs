@@ -55,11 +55,7 @@ public class animal_Base : MonoBehaviour
 
     IEnumerator Die()
     {
-        if(!isDead)
-        {
-            waypointManager.Instance.addGold(deathMoney);
-            isDead = true;
-        }
+        waypointManager.Instance.addGold(deathMoney);
         yield return new WaitForSeconds(0.25f);
         Destroy(gameObject);
     }
@@ -93,7 +89,7 @@ public class animal_Base : MonoBehaviour
     {
         if(other.CompareTag("Respawn"))
         {
-            StartCoroutine(Die());
+            Destroy(gameObject);
         }
     }
 
