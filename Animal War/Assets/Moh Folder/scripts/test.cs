@@ -24,7 +24,7 @@ public class test : MonoBehaviour
         Debug.Log(other);
         if (!other.CompareTag("proj")) return;
 
-        else if (hp < 0)
+        if (hp < 0)
         {
             Destroy(gameObject);
         }

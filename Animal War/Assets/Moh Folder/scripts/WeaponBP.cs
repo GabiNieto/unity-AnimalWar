@@ -19,7 +19,7 @@ public class WeaponBP : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("proj")) return;
+        Debug.Log(other);
      if (other.CompareTag("Enemy") && Time.time >= nextShot)
         {
             Transform noseDirection = transform.parent;
