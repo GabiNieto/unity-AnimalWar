@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a8bb7cdda54d6499f5fd8285a5ada8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::animal_Base
-  maxHealth: 5
+  maxHealth: 10
   currentHealth: 0
   speed: 2
   deathMoney: 5
@@ -149,7 +149,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!54 &651339942298726640
 Rigidbody:

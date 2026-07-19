@@ -85,13 +85,20 @@ public class animal_Base : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.tag);
         if(other.CompareTag("Respawn"))
         {
             Destroy(gameObject);
         }
+        if(other.CompareTag("proj"))
+        {
+            Debug.Log("HIT");
+            TakeDamage(2);
+        }
     }
+
 
     // Update is called once per frame
     void Update()
