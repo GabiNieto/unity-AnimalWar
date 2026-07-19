@@ -19,20 +19,21 @@ public class test : MonoBehaviour
         rb.linearVelocity = direction.normalized * speed;
     }
 
+    //cube attacked
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other);
+        Debug.Log("Game obj: "+other.gameObject);
+
         if (!other.CompareTag("proj")) return;
+
+        Destroy(other); // supposed to remove bullet (may not work)
+        Debug.Log("HP: " + hp);
+        hp--;
+        Debug.Log("HP: " + hp);
 
         if (hp < 0)
         {
             Destroy(gameObject);
-        }
-        else
-        {
-            Debug.Log("HP: " + hp);
-            hp--;
-            Debug.Log("HP: " + hp);
         }
     }
 }

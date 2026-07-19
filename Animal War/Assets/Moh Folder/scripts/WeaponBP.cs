@@ -11,6 +11,7 @@ public class WeaponBP : MonoBehaviour
     public bool isAOE;
     public float radius; //currently obselete
     public float lifespan;
+    public float dmg;
 
     void Start()
     {
@@ -19,15 +20,16 @@ public class WeaponBP : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        Debug.Log(other);
      if (other.CompareTag("Enemy") && Time.time >= nextShot)
         {
+            //parent gets affected here
             Transform noseDirection = transform.parent;
             Vector3 direction = other.transform.position - noseDirection.position;
             direction.y = 0;
 
             noseDirection.rotation = Quaternion.LookRotation(direction);
-           GameObject shot = Instantiate(proj, noseDirection.position, noseDirection.rotation);
+            GameObject shot = Instantiate(proj, noseDirection.position, noseDirection.rotation);
+            
             Debug.Log("Shot");
             Destroy(shot, lifespan);
             nextShot = Time.time + cooldown;
