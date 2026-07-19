@@ -8,6 +8,7 @@ public class animal_Base : MonoBehaviour
     public float maxHealth = 10f;
     public float currentHealth;
     public float speed = 2.0f;
+    public int deathMoney = 5;
 
     public Vector3 startScale = Vector3.one;
     public Vector3 endScale = new Vector3(3f, 3f, 3f);
@@ -52,6 +53,7 @@ public class animal_Base : MonoBehaviour
 
     IEnumerator Die()
     {
+        waypointManager.Instance.addGold(deathMoney);
         yield return new WaitForSeconds(0.25f);
         Destroy(gameObject);
     }
