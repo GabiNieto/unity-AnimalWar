@@ -6,6 +6,7 @@ public class spawn_Manager : MonoBehaviour
     public GameObject animalBunny;
     public GameObject animalDeer;
     public GameObject animalTiger;
+    public GameObject animalSUPERMONKEY;
     public Transform spawnPoint;
 
     public float waveInterval = 10f;
