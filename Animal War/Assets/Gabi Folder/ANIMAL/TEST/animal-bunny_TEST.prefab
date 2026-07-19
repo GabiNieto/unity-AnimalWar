@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a8bb7cdda54d6499f5fd8285a5ada8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::animal_Base
-  maxHealth: 10
+  maxHealth: 5
   currentHealth: 0
   speed: 2
   deathMoney: 5
