@@ -52,10 +52,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: weapon-ammo-arrow
       objectReference: {fileID: 0}
-    - target: {fileID: 8481501477641477473, guid: d0546acedf3648047a0412a89037b7ad, type: 3}
-      propertyPath: m_TagString
-      value: proj
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
