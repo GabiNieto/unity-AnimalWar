@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: animal-tiger_TEST
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 286647c05d5624940bde37c6e2fe8f9b, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
