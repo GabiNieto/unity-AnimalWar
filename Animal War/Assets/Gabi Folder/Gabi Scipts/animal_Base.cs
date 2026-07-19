@@ -27,7 +27,7 @@ public class animal_Base : MonoBehaviour
         currentHealth = maxHealth;
         transform.localScale = startScale;
 
-        StartCoroutine(TestDamage()); //FOR TESTING PURPOSE
+        //StartCoroutine(TestDamage()); //FOR TESTING PURPOSE
     }
 
     public void TakeDamage(float damage)
