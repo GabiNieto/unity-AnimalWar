@@ -25,8 +25,7 @@ public class test : MonoBehaviour
         Debug.Log("Game obj: "+other.gameObject);
 
         if (!other.CompareTag("proj")) return;
-
-        Destroy(other); // supposed to remove bullet (may not work)
+        
         Debug.Log("HP: " + hp);
         hp--;
         Debug.Log("HP: " + hp);

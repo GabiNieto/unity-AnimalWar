@@ -28,7 +28,7 @@ public class WeaponBP : MonoBehaviour
             direction.y = 0;
 
             noseDirection.rotation = Quaternion.LookRotation(direction);
-            GameObject shot = Instantiate(proj, noseDirection.position, noseDirection.rotation);
+            GameObject shot = Instantiate(proj, projSpawn.position, projSpawn.rotation);
             
             Debug.Log("Shot");
             Destroy(shot, lifespan);
