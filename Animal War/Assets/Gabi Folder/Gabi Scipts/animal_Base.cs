@@ -9,6 +9,7 @@ public class animal_Base : MonoBehaviour
     public float currentHealth;
     public float speed = 2.0f;
     public int deathMoney = 5;
+    private bool isDead = false;
 
     public Vector3 startScale = Vector3.one;
     public Vector3 endScale = new Vector3(3f, 3f, 3f);
@@ -38,8 +39,9 @@ public class animal_Base : MonoBehaviour
         float t = 1f - (currentHealth / maxHealth);
         transform.localScale = Vector3.Lerp(startScale, endScale, t);
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead)
         {
+            isDead = true;
             StartCoroutine(Die());
         }
     }
@@ -53,7 +55,11 @@ public class animal_Base : MonoBehaviour
 
     IEnumerator Die()
     {
-        waypointManager.Instance.addGold(deathMoney);
+        if(!isDead)
+        {
+            waypointManager.Instance.addGold(deathMoney);
+            isDead = true;
+        }
         yield return new WaitForSeconds(0.25f);
         Destroy(gameObject);
     }
