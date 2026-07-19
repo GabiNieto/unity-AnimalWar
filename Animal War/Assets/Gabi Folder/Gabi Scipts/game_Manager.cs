@@ -27,6 +27,7 @@ public class game_Manager : MonoBehaviour
 
     public void getMoney(int money)
     {
+
         gold += money;
         Debug.Log("money money");
         UpdateGoldUI();
