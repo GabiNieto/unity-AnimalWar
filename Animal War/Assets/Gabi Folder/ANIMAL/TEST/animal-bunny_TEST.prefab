@@ -127,7 +127,7 @@ MonoBehaviour:
   maxHealth: 5
   currentHealth: 0
   speed: 2
-  deathMoney: 5
+  deathMoney: 1
   startScale: {x: 0.25, y: 0.25, z: 0.25}
   endScale: {x: 0.75, y: 0.75, z: 0.75}
 --- !u!65 &5193085651606222257
