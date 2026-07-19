@@ -60,7 +60,7 @@ public class spawn_Manager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             bunnySpawnTime = 2;
-            deerSpawnTime = 2.5f;
+            deerSpawnTime = 2f;
             yield return StartCoroutine(SpawnBunny());
             yield return StartCoroutine(SpawnDeer());
         }
