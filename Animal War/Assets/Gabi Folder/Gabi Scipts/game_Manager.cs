@@ -1,7 +1,9 @@
+using System.Collections;
 using System.Data.SqlTypes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class game_Manager : MonoBehaviour
 {
@@ -12,11 +14,14 @@ public class game_Manager : MonoBehaviour
 
     public GameObject towerUI; //MAY BE CHANGE TO UI
 
+    public GameObject gameOverUI;
+
     private constructionTower selectedTower;
 
 
     public TextMeshProUGUI goldText;
 
+    public TextMeshProUGUI healthText;
 
     public void getMoney(int money)
     {
@@ -30,12 +35,31 @@ public class game_Manager : MonoBehaviour
         goldText.text = "Gold: " + gold;
     }
 
+    public void takeDamage()
+    {
+        health--;
+        healthText.text = "Health: " + health;
+        if (health <= 0)
+        {
+            gameOverUI.SetActive(true);
+            StartCoroutine(endScreen());
+
+        }
+    }
+
+
+    IEnumerator endScreen()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("main_menu");
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         UpdateGoldUI();
         towerUI.SetActive(false);
+        gameOverUI.SetActive(false);
     }
 
     // Update is called once per frame

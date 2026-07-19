@@ -36,7 +36,7 @@ public class spawn_Manager : MonoBehaviour
 
     IEnumerator Wave1()
     {
-        for ( int i = 0; i < 5; i++)
+        for ( int i = 0; i < 22; i++)
         {
             bunnySpawnTime = 2;
             yield return StartCoroutine(SpawnBunny());
