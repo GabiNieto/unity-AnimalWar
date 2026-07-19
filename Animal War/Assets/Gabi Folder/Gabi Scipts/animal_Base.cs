@@ -14,13 +14,14 @@ public class animal_Base : MonoBehaviour
 
 
     //WAYPOINT PATH
-    public Transform[] waypoints;
+    private Transform[] waypoints;
     private int currentWaypoint = 0;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        waypoints = waypointManager.Instance.waypoints;
         currentHealth = maxHealth;
         transform.localScale = startScale;
 
@@ -77,6 +78,14 @@ public class animal_Base : MonoBehaviour
         if (Vector3.Distance(transform.position, waypoints[currentWaypoint].position) < 0.2f)
         {
             currentWaypoint++;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Respawn"))
+        {
+            StartCoroutine(Die());
         }
     }
 
