@@ -13,6 +13,7 @@ public class waypointManager : MonoBehaviour
     {
         gold += money;
         gameManager.getMoney(gold);
+        gold = 0;
     }
     public Transform[] waypoints;
 
