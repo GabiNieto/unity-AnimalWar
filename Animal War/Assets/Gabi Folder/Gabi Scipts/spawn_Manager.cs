@@ -1,29 +1,56 @@
+using System.Collections;
 using UnityEngine;
 
 public class spawn_Manager : MonoBehaviour
 {
     public GameObject animalBunny;
+    public GameObject animalDeer;
+    public GameObject animalTiger;
     public Transform spawnPoint;
-    public float spawnTime; //FOR TEST
 
-    private float timerl; //FOR TEST
+    public float waveInterval = 20f;
 
+    private float tigerSpawnTime = 0f;
+    private float bunnySpawnTime = 0f;
+    private float deerSpawnTime = 0f;
 
-
-    // Update is called once per frame
-    void Update()
+    void Start() //Start it up
     {
-        timerl += Time.deltaTime;
+        StartCoroutine(WaveLoop());
+    }
 
-        if(timerl >= spawnTime)
+    IEnumerator WaveLoop() //Where the magic Happen
+    {
+        yield return StartCoroutine(Wave1());
+        yield return  new WaitForSeconds(waveInterval);
+        yield return StartCoroutine(Wave1());
+    }
+
+    IEnumerator Wave1()
+    {
+        for ( int i = 0; i < 5; i++)
         {
-            SpawnBunny();
-            timerl = 0;
+            bunnySpawnTime = 1;
+            yield return StartCoroutine(SpawnBunny());
         }
     }
 
-    void SpawnBunny()
+
+    IEnumerator SpawnTiger()
     {
+        yield return new WaitForSeconds(tigerSpawnTime);
+        Instantiate(animalTiger, spawnPoint.position, Quaternion.identity);
+    }
+
+    IEnumerator SpawnBunny()
+    {
+        yield return new WaitForSeconds(bunnySpawnTime);
         Instantiate(animalBunny, spawnPoint.position, Quaternion.identity);
+    }
+
+    IEnumerator SpawnDeer()
+    {
+        yield return new WaitForSeconds(deerSpawnTime);
+        Instantiate(animalDeer, spawnPoint.position, Quaternion.identity);
     }
 }
