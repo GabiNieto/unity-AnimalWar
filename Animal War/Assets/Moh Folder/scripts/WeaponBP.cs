@@ -10,6 +10,7 @@ public class WeaponBP : MonoBehaviour
     public Transform projSpawn;
     public bool isAOE;
     public float radius; //currently obselete
+    public float lifespan;
 
     void Start()
     {
@@ -26,8 +27,9 @@ public class WeaponBP : MonoBehaviour
             direction.y = 0;
 
             noseDirection.rotation = Quaternion.LookRotation(direction);
-            Instantiate(proj, noseDirection.position, noseDirection.rotation);
+           GameObject shot = Instantiate(proj, noseDirection.position, noseDirection.rotation);
             Debug.Log("Shot");
+            Destroy(shot, lifespan);
             nextShot = Time.time + cooldown;
         }   
     }
