@@ -87,16 +87,25 @@ public class animal_Base : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        
         Debug.Log(other.tag);
         if(other.CompareTag("Respawn"))
         {
             Destroy(gameObject);
         }
+
+        if (other.CompareTag("canon"))
+        {
+            Destroy(other.gameObject);
+            TakeDamage(3);
+        }
+
         if(other.CompareTag("proj"))
         {
             Debug.Log("HIT");
             TakeDamage(2);
         }
+        
     }
 
 

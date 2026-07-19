@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - proj
+  - canon
   layers:
   - Default
   - TransparentFX
