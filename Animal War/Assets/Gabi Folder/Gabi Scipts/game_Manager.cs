@@ -16,6 +16,8 @@ public class game_Manager : MonoBehaviour
 
     public GameObject gameOverUI;
 
+    public GameObject gameWinUI;
+
     private constructionTower selectedTower;
 
 
@@ -54,17 +56,35 @@ public class game_Manager : MonoBehaviour
         SceneManager.LoadScene("main_menu");
     }
 
+    public void youWin()
+    {
+        StartCoroutine(finalWinScreen());
+    }
+
+    IEnumerator finalWinScreen()
+    {
+        gameWinUI.SetActive(true);
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("main_menu");
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         UpdateGoldUI();
         towerUI.SetActive(false);
         gameOverUI.SetActive(false);
+        gameWinUI.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("main_menu");
+        }
+
         if(Input.GetMouseButtonDown(0))
         {
             HandleClick();

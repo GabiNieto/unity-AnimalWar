@@ -20,8 +20,12 @@ public class spawn_Manager : MonoBehaviour
     private float elephantSpawnTime = 0f;
     private float catipillerSpawnTime = 0f;
 
+
+    private game_Manager manager;
+
     void Start() //Start it up
     {
+        manager = FindAnyObjectByType<game_Manager>();
         StartCoroutine(WaveLoop());
     }
 
@@ -47,6 +51,8 @@ public class spawn_Manager : MonoBehaviour
         yield return new WaitForSeconds(waveInterval);
         yield return StartCoroutine(Wave10());
         yield return new WaitForSeconds(waveInterval);
+        yield return new WaitForSeconds(waveInterval);
+        manager.youWin();
     }
 
     IEnumerator Wave1()
